@@ -1,12 +1,42 @@
 # Fragment files
 
 This folder contains the starting "substrates" for the insulin gene assembly challenge. Each file contains the insulin gene that I have fragments (sonicated) in some way.
-If you are working on the in-class workshop please only use the data contained in `fragmentsLevel0.txt`. The other files
-are if you would like an additional challege after the workshop is over.
 
-Below are some details on how to read the files and how they were generated.
 
-## Reading the files
+## During the workshop (students please read!)
+
+If you are currently in class participating in the workshop you only need to worry about a couple files.
+
+To get started testing your assembly algorithim I recommend using the `TESTING_fragmentsLevel0.txt` file.
+This file is just like the real deal but only contains a very small number of fragments and you can check
+your answer by looking at the sequence in `TESTING_ANSWER_fragmentsLevel0.txt`.
+
+You can use the Python function below to read the test fragments and the answer file. The function will
+return a tuple. The first item is the correct answer as a string and the second is a list of the 
+test fragments.
+
+```Python
+def download_test_data():
+    import requests
+    """Downloads level 0 test data and correct answer. Returns a tuple. First value is the correct
+    answer as a string and second are the test fragments as a list of strings.
+    """
+    import requests
+    frags = requests.get(
+        'https://raw.githubusercontent.com/EthanHolleman/RCWorkshop/main/fragFiles/TESTING_fragmentsLevel0.txt'
+    
+    )
+    frags = frags.text.split('\n')[:-1] 
+    
+    answer = requests.get(
+        'https://raw.githubusercontent.com/EthanHolleman/RCWorkshop/main/fragFiles/TESTING_ANSWER_fragmentsLevel0.txt'
+    )
+    answer = answer.text.strip()
+    
+    return answer, frags
+```
+
+## Reading the real gene fragments file
 
 All fragment files contain one fragment per line. Thats it. For the sake of time there is a function below
 that you can copy and paste to download the level 0 fragments and return them as a list of strings.
