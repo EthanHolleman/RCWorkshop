@@ -26,6 +26,6 @@ def check_answer(your_answer: str):
     
     final_score = your_score + length_diff
     message = 'You got ' + str(round((1 - (final_score / len(answer)))*100, 2)) + ' % of the sequence correct'
-		print(message)
-		return message
+    print(message)
+    return message
  ```
