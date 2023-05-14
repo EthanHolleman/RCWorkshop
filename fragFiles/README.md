@@ -12,9 +12,16 @@ All fragment files contain one fragment per line. Thats it. For the sake of time
 that you can copy and paste to download the level 0 fragments and return them as a list of strings.
 
 ```python
-
-def download_level_0():
-
+def download_frags():
+    """Downloads level 0 fragments for insulin assembly challenge from GitHub and
+    returns them as a list of strings.
+    """
+    import requests
+    response = requests.get(
+        'https://raw.githubusercontent.com/EthanHolleman/RCWorkshop/main/fragFiles/fragmentsLevel0.txt'
+    
+    )
+    return response.text.split('\n')[:-1]  # there is extra \n at end of file
 ```
 
 ## How were these files generated?
